@@ -108,8 +108,9 @@ export default class BaseLayOutView extends Vue {
             const index = themesGroups.findIndex(theme => theme === currentTheme) ?? 0
             // 切换下一个主题
             html.setAttribute('theme', themesGroups[(index + 1) == themesGroups.length ? 0 : index + 1])
+            // 将当前主题保存在浏览器中
+            window.localStorage.setItem('theme', themesGroups[(index + 1) == themesGroups.length ? 0 : index + 1])
         }
-        
     }
 }
 </script>
