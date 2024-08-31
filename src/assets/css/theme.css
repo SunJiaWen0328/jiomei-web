@@ -73,7 +73,7 @@
   /* hover字体和图表颜色 */
   --hover-font-color: var(--dominant-color);
   /* 广告栏背景 */
-  --banner-bg: url(../images/banner-bg.jpg);
+  --banner-bg: url(../images/banner-bg-yellow.jpg);
 }
 
 :root[theme = 'popular'] {
@@ -99,7 +99,7 @@
   /* hover字体和图表颜色 */
   --hover-font-color: var(--dominant-color);
   /* 广告栏背景 */
-  --banner-bg: url(../images/banner-bg.jpg);
+  --banner-bg: url(../images/banner-bg-popular.jpg);
 }
 
 :root[theme = 'pink'] {

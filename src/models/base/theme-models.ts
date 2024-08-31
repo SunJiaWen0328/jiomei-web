@@ -4,5 +4,5 @@ export const themesGroups = [
     'blue',
     'yellow',
     'popular',
-    'pink',
+    // 'pink',
 ]
