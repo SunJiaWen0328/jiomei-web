@@ -8,8 +8,6 @@
   --accent-color: #7a6ad8;
   /* 背景色 */
   --bg-color:  #fff;
-  /* 字体色 */
-  --font-color: #fff;
   /* 边框色 */
   --border-color: #fff;
   /* 很多图标、border都用这个颜色 */
@@ -22,6 +20,12 @@
   --hover-font-color: #7a6ad8;
   /* logo */
   --banner-bg: url(../images/banner-bg.jpg);
+  /* 字体色-1-背景色 */
+  --font1-color: #fff;
+  /* 字体色-2-深色 */
+  --font2-color: #1e1e1e;
+  /* 字体色-3-浅色 */
+  --font3-color: #4a4a4a;
 }
 
 :root[theme = 'blue'] {
@@ -29,13 +33,12 @@
   --dominant-color: #4F3816;
   --dominant-rgb: 79,56,22;
   /* 次色 */
-  --secondary-color: #307092;
+  /* --secondary-color: #307092; */
+  --secondary-color: #599BBE;
   /* 强调色 */
   --accent-color: #44E8EB;
   /* 背景色 */
   --bg-color: #E9F2D9;
-  /* 字体色 */
-  --font-color: #fff;
   /* 边框色 */
   --border-color: #E9F2D9;
   /* 图标色 */
@@ -48,6 +51,12 @@
   --hover-font-color: var(--dominant-color);
   /* 广告栏背景 */
   --banner-bg: url(../images/banner-bg-blue.jpg);
+  /* 字体色-1-背景色 */
+  --font1-color: #E9F2D9;
+  /* 字体色-2-深色 */
+  --font2-color: #4F3816;
+  /* 字体色-3-浅色 */
+  --font3-color: #E9F2D9;
 }
 
 :root[theme = 'yellow'] {
@@ -55,13 +64,13 @@
   --dominant-color: #190D33;
   --dominant-rgb: 25,13,51;
   /* 次色 */
-  --secondary-color: #8A612B;
+  /* --secondary-color: #8A612B; */
+  --secondary-color: #F2B536;
   /* 强调色 */
   --accent-color: #Db9948;
+  /* --secondary-color: #F2B536; */
   /* 背景色 */
   --bg-color: #EBE494;
-  /* 字体色 */
-  --font-color: #fff;
   /* 边框色 */
   --border-color: #EBE494;
   /* 图标色 */
@@ -74,6 +83,12 @@
   --hover-font-color: var(--dominant-color);
   /* 广告栏背景 */
   --banner-bg: url(../images/banner-bg-yellow.jpg);
+  /* 字体色-1-背景色 */
+  --font1-color: #EBE494;
+  /* 字体色-2-深色 */
+  --font2-color: #8A612B;
+  /* 字体色-3-浅色 */
+  --font3-color: #EBE494;
 }
 
 :root[theme = 'popular'] {
@@ -81,13 +96,12 @@
   --dominant-color: #122324;
   --dominant-rgb: 18,35,36;
   /* 次色 */
-  --secondary-color: #6E2666;
+  /* --secondary-color: #6E2666; */
+  --secondary-color: #C146B0;
   /* 强调色 */
   --accent-color: #C246AF;
   /* 背景色 */
   --bg-color: #F587F1;
-  /* 字体色 */
-  --font-color: #fff;
   /* 边框色 */
   --border-color: #EBE494;
   /* 图标色 */
@@ -100,6 +114,12 @@
   --hover-font-color: var(--dominant-color);
   /* 广告栏背景 */
   --banner-bg: url(../images/banner-bg-popular.jpg);
+  /* 字体色-1-背景色 */
+  --font1-color: #EBE494;
+  /* 字体色-2-深色 */
+  --font2-color: #6E2666;
+  /* 字体色-3-浅色 */
+  --font3-color: #F587F1;
 }
 
 :root[theme = 'pink'] {
@@ -111,8 +131,6 @@
   --accent-color: #f3e5d3;
   /* 背景色 */
   --bg-color: #83b5ad;
-  /* 字体色 */
-  --font-color: #fff;
   /* 边框色 */
   --border-color: #EBE494;
   /* 图标色 */
@@ -125,6 +143,12 @@
   --hover-font-color: var(--dominant-color);
   /* 广告栏背景 */
   --banner-bg: url(../images/banner-bg.jpg);
+  /* 字体色-1-背景色 */
+  --font1-color: #fff;
+  /* 字体色-2-深色 */
+  --font2-color: #1e1e1e;
+  /* 字体色-3-浅色 */
+  --font3-color: #4a4a4a;
 }
 
 /* ---------------------------------------------
@@ -206,7 +230,7 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #1e1e1e;
+  color: var(--font2-color);
   margin-top: 0px;
   margin-bottom: 0px;
   font-weight: 700;
@@ -219,7 +243,7 @@ ul {
 p {
   font-size: 14px;
   line-height: 28px;
-  color: #4a4a4a;
+  color: var(--font3-color);
 }
 
 img {
@@ -235,6 +259,9 @@ Global Styles
 html,
 body {
   font-family: 'Poppins', sans-serif;
+}
+
+body {
   background-color: var(--bg-color) !important;
 }
 
@@ -696,7 +723,7 @@ Header Style
     line-height: 50px;
     height: 50px;
     font-weight: 400;
-    color: #1e1e1e;
+    color: var(--font2-color);
     background-color: var(--secondary-color);
     border-radius: 0px 0px 25px 25px;
   }
@@ -972,7 +999,7 @@ Services Style
 }
 
 .services .service-item p {
-  color: #4a4a4a;
+  color: var(--font3-color);
   margin-bottom: 25px;
 }
 
@@ -1024,8 +1051,12 @@ About Style
 }
 
 .accordion-button:not(.collapsed) {
-  color: var(--dominant-color);
-  background-color: var(--bg-color);
+  color: var(--dominant-color) !important;
+  background-color: var(--bg-color)!important;
+}
+
+h2.accordion-header {
+  margin-top: -1px;
 }
 
 h2.accordion-header button {
@@ -1035,10 +1066,14 @@ h2.accordion-header button {
   font-weight: 600;
 }
 
+.accordion-button:focus {
+  box-shadow: 0 0 0 0.25rem rgb(255, 255, 255, 1.0) !important;
+}
+
 .accordion-button::after {
   font-size: 18px;
   font-weight: 500;
-  background-image: none;
+  background-image: url("data:image/svg+xml,%3Csvg t='1725204695703' class='icon' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='6744' width='200' height='200'%3E%3Cpath d='M890.336 330.912c-12.576-12.416-32.8-12.352-45.248 0.192L517.248 661.952 184.832 332.512c-12.576-12.448-32.8-12.352-45.28 0.192-12.448 12.576-12.352 32.832 0.192 45.28l353.312 350.112c0.544 0.544 1.248 0.672 1.792 1.184 0.128 0.128 0.16 0.288 0.288 0.416 6.24 6.176 14.4 9.28 22.528 9.28 8.224 0 16.48-3.168 22.72-9.472l350.112-353.312C902.976 363.616 902.88 343.36 890.336 330.912z' p-id='6745' fill='%23ffffff'%3E%3C/path%3E%3C/svg%3E") !important;
   content: '+';
   width: 30px;
   height: 30px;
@@ -1051,7 +1086,7 @@ h2.accordion-header button {
 }
 
 .accordion-button:not(.collapsed)::after {
-  background-image: none;
+  /* background-image: url("data:image/svg+xml,%3Csvg t='1725204413123' class='icon' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='6562' width='200' height='200'%3E%3Cpath d='M887.328 617.152 533.952 267.008c-0.512-0.512-1.216-0.672-1.76-1.152-0.128-0.128-0.16-0.32-0.288-0.448-12.576-12.416-32.832-12.352-45.28 0.192L136.512 618.944c-12.448 12.576-12.352 32.8 0.192 45.248 6.24 6.176 14.4 9.28 22.528 9.28 8.224 0 16.48-3.168 22.72-9.472l327.84-330.816 332.48 329.408c6.24 6.176 14.368 9.28 22.528 9.28 8.256 0 16.48-3.168 22.72-9.472C899.968 649.856 899.872 629.6 887.328 617.152z' p-id='6563' fill='%23ffffff'%3E%3C/path%3E%3C/svg%3E") !important; */
   line-height: 32px;
   content: '-';
 }
@@ -1060,7 +1095,7 @@ h2.accordion-header button {
   padding: 0px 25px 30px 25px;
   font-size: 14px;
   line-height: 28px;
-  color: #4a4a4a;
+  color: var(--font2-color);
 }
 
 .about-us .section-heading {
@@ -1102,9 +1137,9 @@ Products Style
 }
 
 .event_filter li a {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
-  color: #1e1e1e;
+  color: var(--font3-color);
   transition: all .3s;
 }
 
@@ -1512,14 +1547,14 @@ Events Style
 
 .events .item ul li span {
   display: inline-block;
-  font-size: 14px;
-  color: #4a4a4a;
+  font-size: 16px;
+  color: var(--font3-color);
   margin-bottom: 10px;
 }
 
 .events .item ul li h6 {
   font-size: 16px;
-  color: var(--dominant-color);
+  color: var(--font2-color);
   font-weight: 600;
 }
 
@@ -1621,7 +1656,7 @@ Contact Style
 
 .contact-us .special-offer h6 {
   font-size: 15px;
-  color: #4a4a4a;
+  color: var(--font2-color);
   text-transform: uppercase;
   font-weight: 400;
   margin-bottom: 15px;

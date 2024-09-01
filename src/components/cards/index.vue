@@ -3,7 +3,7 @@
     <div v-masonry horizontalOrder="true">
       <div class="masonry-item card-box" 
         v-for="item of noteItems" v-masonry-tile :class="`demo-${item.id}`" :key="item.id"
-        @click="showDetails(item)" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        @click="showDetails(item)"
       >
         <img class="card-img" :src="item.imgUrl">
         <div class="card-info">
@@ -22,11 +22,40 @@
     </div>
     
     <!-- Modal -->
-    <div class="note-details-mask">
-      <div class="note-container">
-
+    <div class="note-details-mask" id="exampleModal" style="display: none;" @click="closeModal">
+      <div class="note-container" @click="event.stopPropagation()">
+        <!-- 作者 -->
+        <div class="author" style="display: none;">
+          <div class="author-wrapper">
+            <div class="info">
+              <a href="/user/profile/620fd97d000000001000d7e2?channel_type=web_explore_feed" class="" target="_blank">
+                <img class="avatar-item" crossorigin="anonymous" src="https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31337r7okhk005ogfr5uk1lv27b6rrf8?imageView2/2/w/120/format/webp|imageMogr2/strip" style="width: 40px; height: 40px;"></a>
+              <a href="/user/profile/620fd97d000000001000d7e2?channel_type=explore_feed&amp;parent_page_channel_type=web_profile_board" class="name" target="_blank">
+                <span class="username">H😺</span>
+              </a>
+            </div>
+            <div class="note-detail-follow-btn">
+              <button class="reds-button-new follow-button large primary follow-button">
+                <span class="reds-button-new-box">
+                  <span class="reds-button-new-text">关注</span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!--  图片 -->
+        <div class="media-container" style="width: 50%; height: calc(133.333vw);">
+          <div class="slider-container">
+          </div>
+        </div>
+        <!-- 文本 -->
+        <div class="interaction-container">
+          文本区域
+        </div>
       </div>
-      <div class="close-circle">
+      
+      <!-- 关闭按钮 -->
+      <div class="close-circle" @click="closeModal">
         <div class="close close-mask-dark">
           <svg t="1718870733164" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1690" width="20" height="20"><path d="M0 0h1024v1024H0z" fill="#ffffff" fill-opacity="0" p-id="1691"></path><path d="M240.448 168l2.346667 2.154667 289.92 289.941333 279.253333-279.253333a42.666667 42.666667 0 0 1 62.506667 58.026666l-2.133334 2.346667-279.296 279.210667 279.274667 279.253333a42.666667 42.666667 0 0 1-58.005333 62.528l-2.346667-2.176-279.253333-279.253333-289.92 289.962666a42.666667 42.666667 0 0 1-62.506667-58.005333l2.154667-2.346667 289.941333-289.962666-289.92-289.92a42.666667 42.666667 0 0 1 57.984-62.506667z" fill="#ffffff" p-id="1692"></path></svg>
         </div>
@@ -51,12 +80,23 @@ export default class NoteItemsView extends Vue {
   currentShow: NoteItem | null = null
 
   mounted() {
-    console.log(this.noteItems, this.noteItems[0])
     this.currentShow = this.noteItems[3]
   }
 
+  // 打开弹窗
   showDetails(data: NoteItem) {
-    console.log('打开', data.author)
+    const modal = document.getElementById('exampleModal')
+    if (modal) {
+      modal.style.display = 'block'
+    }
+  }
+
+  // 关闭弹窗
+  closeModal() {
+    const modal = document.getElementById('exampleModal')
+    if (modal) {
+      modal.style.display = 'none'
+    }
   }
 }
 </script>
@@ -162,15 +202,47 @@ export default class NoteItemsView extends Vue {
     background: rgba(0,0,0,0.25);
 
     .note-container {
-      width: 1166px;
-      transition: transform 0.4s ease 0s, width 0.4s ease 0s;
-      transform: translate(180px, 32px) scale(1);
-      overflow: visible;
-      box-shadow:  0 8px 64px 0 rgba(0,0,0,0.04), 0 1px 4px 0 rgba(0,0,0,0.02);
+      display: flex;
+      box-shadow: var(--elevation-note-shadow);
       border-radius: 20px;
       overflow: hidden;
-      background: #fff;
+      background: var(--elevation-note-background);
       transform-origin: left top;
+      transition: transform 0.4s, width 0.4s;
+      transform: translate(88px, 24px) scale(1);
+      width: 80%;
+
+      .media-container {
+        position: relative;
+        background: var(--color-active-background);
+        flex-shrink: 0;
+        flex-grow: 0;
+        -webkit-user-select: none;
+        user-select: none;
+        overflow: hidden;
+        border-radius: 20px 0 0 20px;
+        transform: translateZ(0);
+        height: 100%;
+        object-fit: contain;
+        width: auto;
+        min-width: var(--interaction-width);
+        background-color: aquamarine;
+      }
+
+      .interaction-container {
+        flex-shrink: 0;
+        border-radius: 0 20px 20px 0;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        height: 100%;
+        background-color: var(--elevation-note-background);
+        overflow: visible;
+        border-left: 1px solid var(--color-border);
+        width: var(--interaction-width);
+        background-color: aqua;
+      }
     }
 
     .close-circle {
@@ -202,6 +274,7 @@ export default class NoteItemsView extends Vue {
     }
   }
 }
+// 帖子排序
 @media screen and (max-width: 695px) {
   .masonry-item.card-box {
     width: 50%;
@@ -227,13 +300,47 @@ export default class NoteItemsView extends Vue {
     width: 20%;
   }
 }
-@media screen and (min-width: 1424px) and (max-width: 1727px) {
-    .note-container {
-      height: calc(100% - 64px);
-    }
-    .close-circle {
-      left: 32px;
-      top: 32px;
-    }
+// 弹框-小屏幕
+@media screen and (max-width: 959px) {
+  .note-container {
+    width: 100%;
+  }
 }
+// 弹窗-大屏幕
+@media screen and (min-width: 960px) and (max-width: 1191px) {
+  :root {
+    --vertical: 12;
+    --horizontal: 24;
+    --interaction-width: 360px;
+    --horizontalGapPx: 24px;
+    --verticalGapPx: 12px;
+    --feeds-width: calc(75vw - 42px);
+    --feeds-columns: 3;
+    --columnWidth: calc(25vw - 30px);
+    --note-card-corner-radius: 16px;
+    --modal-width: 360px;
+  }
+  .note-container {
+    height: calc(100% - 48px);
+  }
+  .close-circle {
+    left: 24px;
+    top: 24px;
+  }
+}
+@media screen and (min-width: 1192px) and (max-width: 1423px) {
+  .note-container {
+    height: calc(100% - 48px);
+  }
+}
+@media screen and (min-width: 1424px) and (max-width: 1727px) {
+  .note-container {
+    height: calc(100% - 64px);
+  }
+  .close-circle {
+    left: 32px;
+    top: 32px;
+  }
+}
+
 </style>
